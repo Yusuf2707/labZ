@@ -1,0 +1,16 @@
+.MODEL TINY
+.CODE
+    org 100h
+start proc
+    mov ah, 4Eh
+    mov dx, offset a_MaskForVir
+    mov cx, 0
+    int 21h
+    mov al, '$'
+    mov cs:[80h + 2ch], al
+    mov ah, 09h
+    mov dx, 9Eh
+    int 21h
+start endp
+a_MaskForVir db '*.*', 0 
+end start
